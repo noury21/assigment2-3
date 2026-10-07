@@ -20,10 +20,9 @@
  * @returns {string}
  */
 export function pageHeading() {
-  // TODO: querySelector the h1, then read its textContent.
-  throw new Error("pageHeading is not written yet");
+  const heading = document.querySelector("h1");
+  return heading.textContent;
 }
-
 /**
  * How many product cards are on the page.
  * productCount() -> 5
@@ -31,10 +30,9 @@ export function pageHeading() {
  * @returns {number}
  */
 export function productCount() {
-  // TODO: querySelectorAll gives you all of them. It has a length.
-  throw new Error("productCount is not written yet");
+  const cards = document.querySelectorAll(".card");
+  return cards.length;
 }
-
 /**
  * The name in every card, in the order they appear.
  * productNames() -> ["Notebook", "Backpack", "Pen", "Desk lamp", "Calculator"]
@@ -44,8 +42,11 @@ export function productCount() {
  * @returns {string[]}
  */
 export function productNames() {
-  // TODO: querySelectorAll, Array.from, then map. A NodeList has no .map.
-  throw new Error("productNames is not written yet");
+  const cards = document.querySelectorAll(".card");
+
+  return Array.from(cards).map(
+    (card) => card.querySelector("h3").textContent
+  );
 }
 
 /**
@@ -57,9 +58,17 @@ export function productNames() {
  * @returns {string|null}
  */
 export function priceOf(name) {
-  // TODO: find the card whose h3 matches, then read its .price.
-  // Remember to return null when nothing matches.
-  throw new Error("priceOf is not written yet");
+  const cards = Array.from(document.querySelectorAll(".card"));
+
+  const card = cards.find(
+    (card) => card.querySelector("h3").textContent === name
+  );
+
+  if (!card) {
+    return null;
+  }
+
+  return card.querySelector(".price").textContent;
 }
 
 /**
@@ -79,4 +88,10 @@ export function priceOf(name) {
  * Remember `export`.
  */
 
-// TODO: write soldOutNames here.
+export function soldOutNames() {
+  const soldOutCards = document.querySelectorAll(".card.sold-out");
+
+  return Array.from(soldOutCards).map(
+    (card) => card.querySelector("h3").textContent
+  );
+}
