@@ -1,0 +1,14 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #222222;
+  margin: 30px;
+}
+
+.stock-line {
+  padding: 12px;
+  color: #222222;
+  background-color: #f0f0f0;
+  margin-bottom: 8px;
+}
